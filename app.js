@@ -515,7 +515,7 @@ function renderHome() {
     { tab: 'threats', icon: '⚠️', title: t.tabThreats, desc: lang === 'ar' ? '١٠ تهديدات' : lang === 'fr' ? '10 menaces' : '10 threats' },
     { tab: 'shield', icon: '🛡️', title: t.tabShield, desc: lang === 'ar' ? '١٠ دفاعات' : lang === 'fr' ? '10 defenses' : '10 defenses' },
     { tab: 'quiz', icon: '🎯', title: t.tabQuiz, desc: lang === 'ar' ? 'اكتشف التأثير' : lang === 'fr' ? 'Reperer l\'influence' : 'Spot the influence' },
-    { tab: 'about', icon: '📖', title: t.tabAbout, desc: lang === 'ar' ? 'عن الكتاب' : lang === 'fr' ? 'A propos' : 'About the book' }
+    { tab: 'about', icon: '📖', title: t.tabAbout, desc: lang === 'ar' ? 'عن الكتاب' : lang === 'fr' ? 'Le livre' : 'About the book' }
   ];
   document.getElementById('homeGrid').innerHTML = `
     <div class="xp-bar-home">
