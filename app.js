@@ -447,7 +447,7 @@ if (themeIdx < 0) themeIdx = 0;
 function cycleTheme() {
   themeIdx = (themeIdx + 1) % THEMES.length;
   document.documentElement.dataset.theme = THEMES[themeIdx];
-  document.getElementById('themeIcon').textContent = THEME_ICONS[themeIdx];
+  { const _e=document.getElementById('themeIcon'); if(_e) _e.textContent=THEME_ICONS[themeIdx]; }
   localStorage.setItem(STORAGE_PREFIX + 'theme', THEMES[themeIdx]);
   playSound('theme');
 }
@@ -456,8 +456,8 @@ function cycleTheme() {
 let splashTimer;
 function initSplash() {
   const t = T[lang];
-  document.getElementById('splashSub').textContent = t.splashSub;
-  document.getElementById('splashHint').textContent = t.splashHint;
+  { const _e=document.getElementById('splashSub'); if(_e) _e.textContent=t.splashSub; }
+  { const _e=document.getElementById('splashHint'); if(_e) _e.textContent=t.splashHint; }
   const featEl = document.getElementById('splashFeatures');
   if (featEl) {
     featEl.innerHTML = t.splashFeatures.map((f, i) =>
@@ -501,7 +501,7 @@ function renderHome() {
   const dayIdx = Math.floor(Date.now() / 86400000) % allCards.length;
   const card = allCards[dayIdx];
   const d = card[lang];
-  document.getElementById('dailyCard').innerHTML = `
+  (document.getElementById('dailyCard')||{}).innerHTML= `
     <div class="daily-label">${t.dailyLabel}</div>
     <div class="daily-title">${d.title}</div>
     <div class="daily-body">${d.desc}</div>
@@ -517,7 +517,7 @@ function renderHome() {
     { tab: 'quiz', icon: '🎯', title: t.tabQuiz, desc: lang === 'ar' ? 'اكتشف التأثير' : lang === 'fr' ? 'Reperer l\'influence' : 'Spot the influence' },
     { tab: 'about', icon: '📖', title: t.tabAbout, desc: lang === 'ar' ? 'عن الكتاب' : lang === 'fr' ? 'Le livre' : 'About the book' }
   ];
-  document.getElementById('homeGrid').innerHTML = `
+  (document.getElementById('homeGrid')||{}).innerHTML= `
     <div class="xp-bar-home">
       <div class="xp-info"><span class="xp-label">${t.xpLabel}</span><span class="xp-value" id="xpDisplay">${getXP()}</span> ${streakHTML}</div>
       <div class="xp-bar-bg"><div class="xp-bar-fill" id="xpBarFill" style="width:${getXP() % 100}%"></div></div>
@@ -542,8 +542,8 @@ function switchToTab(tabName) {
 // ═══════════════ RENDER: THREATS ═══════════════
 function renderThreats() {
   const t = T[lang];
-  document.getElementById('threatsTitle').textContent = t.threatsTitle;
-  document.getElementById('threatsDesc').textContent = t.threatsDesc;
+  { const _e=document.getElementById('threatsTitle'); if(_e) _e.textContent=t.threatsTitle; }
+  { const _e=document.getElementById('threatsDesc'); if(_e) _e.textContent=t.threatsDesc; }
   const container = document.getElementById('threatsContainer');
   container.innerHTML = `
     <div class="search-bar">
@@ -583,8 +583,8 @@ function renderThreats() {
 // ═══════════════ RENDER: SHIELDS ═══════════════
 function renderShields() {
   const t = T[lang];
-  document.getElementById('shieldTitle').textContent = t.shieldTitle;
-  document.getElementById('shieldDesc').textContent = t.shieldDesc;
+  { const _e=document.getElementById('shieldTitle'); if(_e) _e.textContent=t.shieldTitle; }
+  { const _e=document.getElementById('shieldDesc'); if(_e) _e.textContent=t.shieldDesc; }
   const container = document.getElementById('shieldContainer');
   container.innerHTML = `
     <div class="search-bar">
@@ -624,8 +624,8 @@ let quizState = { current: 0, score: 0, answers: [], lifelines: { fiftyFifty: tr
 
 function renderQuiz() {
   const t = T[lang];
-  document.getElementById('quizTitle').textContent = t.quizTitle;
-  document.getElementById('quizDesc').textContent = t.quizDesc;
+  { const _e=document.getElementById('quizTitle'); if(_e) _e.textContent=t.quizTitle; }
+  { const _e=document.getElementById('quizDesc'); if(_e) _e.textContent=t.quizDesc; }
   quizState = { current: 0, score: 0, answers: [], lifelines: { fiftyFifty: true, hint: true, verse: true } };
   renderQuizQuestion();
 }
@@ -807,7 +807,7 @@ function renderAbout() {
     }
   };
   const a = about[lang];
-  document.getElementById('aboutContainer').innerHTML = `
+  (document.getElementById('aboutContainer')||{}).innerHTML= `
     <div class="about-disclaimer">
       <div class="about-disclaimer-title">${a.disclaimerTitle}</div>
       <p>${a.disclaimer}</p>
@@ -859,7 +859,7 @@ function renderHelp() {
       {title:'🤝 Contribuer',body:'GitHub : github.com/abourdim/al-ghazw-al-thaqafi'},
     ]
   };
-  document.getElementById('helpBody').innerHTML = help[lang].map(h => `
+  (document.getElementById('helpBody')||{}).innerHTML= help[lang].map(h => `
     <div class="help-item">
       <div class="help-item-title">${h.title}</div>
       <div>${h.body}</div>
@@ -869,7 +869,7 @@ function renderHelp() {
 
 // ═══════════════ RENDER: DUAS ═══════════════
 function renderDuas() {
-  document.getElementById('duaPanelContent').innerHTML = DUAS.map(d => {
+  (document.getElementById('duaPanelContent')||{}).innerHTML= DUAS.map(d => {
     const dd = d[lang];
     return `
     <div class="dua-item">
@@ -1077,15 +1077,15 @@ function initTypewriter() {
 function renderAll() {
   const t = T[lang];
   // Update UI labels
-  document.getElementById('appTitle').textContent = t.appTitle;
-  document.getElementById('tabHome').textContent = t.tabHome;
-  document.getElementById('tabThreats').textContent = t.tabThreats;
-  document.getElementById('tabShield').textContent = t.tabShield;
-  document.getElementById('tabQuiz').textContent = t.tabQuiz;
-  document.getElementById('tabAbout').textContent = t.tabAbout;
-  document.getElementById('helpTitle').textContent = t.helpTitle;
-  document.getElementById('duaPanelTitle').textContent = t.duaPanelTitle;
-  document.getElementById('narratorTitle').textContent = (NR_T && NR_T[lang]) ? NR_T[lang].title : '🎧 Narrator';
+  { const _e=document.getElementById('appTitle'); if(_e) _e.textContent=t.appTitle; }
+  { const _e=document.getElementById('tabHome'); if(_e) _e.textContent=t.tabHome; }
+  { const _e=document.getElementById('tabThreats'); if(_e) _e.textContent=t.tabThreats; }
+  { const _e=document.getElementById('tabShield'); if(_e) _e.textContent=t.tabShield; }
+  { const _e=document.getElementById('tabQuiz'); if(_e) _e.textContent=t.tabQuiz; }
+  { const _e=document.getElementById('tabAbout'); if(_e) _e.textContent=t.tabAbout; }
+  { const _e=document.getElementById('helpTitle'); if(_e) _e.textContent=t.helpTitle; }
+  { const _e=document.getElementById('duaPanelTitle'); if(_e) _e.textContent=t.duaPanelTitle; }
+  { const _e=document.getElementById('narratorTitle'); if(_e) _e.textContent=(NR_T && NR_T[lang]) ? NR_T[lang].title : '🎧 Narrator'; }
 
   // Narrator labels
   document.querySelectorAll('[data-nr]').forEach(el => {
@@ -1115,7 +1115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeIdx < 0) themeIdx = 0;
   }
   document.documentElement.dataset.theme = THEMES[themeIdx];
-  document.getElementById('themeIcon').textContent = THEME_ICONS[themeIdx];
+  { const _e=document.getElementById('themeIcon'); if(_e) _e.textContent=THEME_ICONS[themeIdx]; }
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
