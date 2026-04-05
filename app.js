@@ -369,10 +369,8 @@ function addXP(amount) {
 }
 function updateXPDisplay() {
   const xpEl = document.getElementById('xpDisplay');
-  if (!xpEl) return;
   if (xpEl) xpEl.textContent = getXP();
   const xpBar = document.getElementById('xpBarFill');
-  if (!xpBar) return;
   if (xpBar) {
     const level = Math.floor(getXP() / 100);
     const progress = (getXP() % 100);
@@ -461,7 +459,6 @@ function initSplash() {
   { const _e=document.getElementById('splashSub'); if(_e) _e.textContent=t.splashSub; }
   { const _e=document.getElementById('splashHint'); if(_e) _e.textContent=t.splashHint; }
   const featEl = document.getElementById('splashFeatures');
-  if (!featEl) return;
   if (featEl) {
     featEl.innerHTML = t.splashFeatures.map((f, i) =>
       `<div class="splash-feature" style="animation-delay:${0.5 + i * 0.3}s">${f}</div>`
@@ -469,7 +466,6 @@ function initSplash() {
   }
   let count = 5;
   const countEl = document.getElementById('splashCount');
-  if (!countEl) return;
   splashTimer = setInterval(() => {
     count--;
     if (countEl) countEl.textContent = count;
@@ -479,7 +475,6 @@ function initSplash() {
 function dismissSplash() {
   clearInterval(splashTimer);
   const splash = document.getElementById('splash');
-  if (!splash) return;
   if (splash) { splash.classList.add('hidden'); setTimeout(() => splash.style.display = 'none', 500); }
 }
 
@@ -550,7 +545,6 @@ function renderThreats() {
   { const _e=document.getElementById('threatsTitle'); if(_e) _e.textContent=t.threatsTitle; }
   { const _e=document.getElementById('threatsDesc'); if(_e) _e.textContent=t.threatsDesc; }
   const container = document.getElementById('threatsContainer');
-  if (!container) return;
   container.innerHTML = `
     <div class="search-bar">
       <span class="search-icon">🔍</span>
@@ -592,7 +586,6 @@ function renderShields() {
   { const _e=document.getElementById('shieldTitle'); if(_e) _e.textContent=t.shieldTitle; }
   { const _e=document.getElementById('shieldDesc'); if(_e) _e.textContent=t.shieldDesc; }
   const container = document.getElementById('shieldContainer');
-  if (!container) return;
   container.innerHTML = `
     <div class="search-bar">
       <span class="search-icon">🔍</span>
@@ -641,7 +634,6 @@ function renderQuizQuestion() {
   const t = T[lang];
   const container = document.getElementById('quizContainer');
   const result = document.getElementById('quizResult');
-  if (!result) return;
   result.classList.add('hidden');
 
   if (quizState.current >= QUIZ.length) {
@@ -719,7 +711,6 @@ function answerQuiz(idx) {
 
   // Feedback
   const fb = document.getElementById('quizFeedback');
-  if (!fb) return;
   fb.classList.remove('hidden');
   fb.innerHTML = `
     <div class="feedback-result ${isCorrect ? 'correct' : 'wrong'}">
@@ -770,7 +761,6 @@ function useVerse() {
   const q = QUIZ[quizState.current][lang];
   // Show explanation as hint
   const fb = document.getElementById('quizFeedback');
-  if (!fb) return;
   fb.classList.remove('hidden');
   fb.innerHTML = `<div class="feedback-explain" style="border-left:3px solid var(--accent);padding-left:12px;">${q.explain}</div>`;
   playSound('click');
@@ -898,7 +888,6 @@ function renderTicker() {
     fr: ['Al-Ghazali : Le probleme est notre vide, pas la force de l\'ennemi', 'L\'Islam est la religion de la raison', 'La sagesse est le bien perdu du croyant', 'Ni exces ni negligence', 'Construisez votre bouclier intellectuel']
   };
   const ticker = document.getElementById('tickerText');
-  if (!ticker) return;
   if (ticker) {
     const items = quotes[lang].map(q => `<span class="tc">&nbsp;&nbsp;🛡️ ${q} &nbsp;&nbsp;</span>`).join('');
     ticker.innerHTML = items + items; // Duplicate for seamless scroll
@@ -910,7 +899,6 @@ function renderTicker() {
 function filterCards(section) {
   const inputId = section + 'Search';
   const input = document.getElementById(inputId);
-  if (!input) return;
   const query = input.value.toLowerCase();
   const cards = document.querySelectorAll(`#${section}Container .${section === 'threats' ? 'threat' : 'shield'}-card`);
   cards.forEach(card => {
@@ -944,14 +932,11 @@ function toggleDuaPanel() {
 }
 function showToast(msg) {
   const t = document.getElementById('toast');
-  if (!t) return;
   const m = document.getElementById('toastMsg');
-  if (!m) return;
   if (t && m) { m.textContent = msg; t.style.display = 'block'; setTimeout(() => t.style.display = 'none', 2500); }
 }
 function initScrollTop() {
   const btn = document.getElementById('scrollTop');
-  if (!btn) return;
   window.addEventListener('scroll', () => {
     if (btn) btn.classList.toggle('visible', window.scrollY > 300);
   });
@@ -978,7 +963,6 @@ function playSound(type) {
 // ═══════════════ CONFETTI ANIMATION ═══════════════
 function launchConfetti() {
   const canvas = document.getElementById('confettiCanvas');
-  if (!canvas) return;
   canvas.style.display = 'block';
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
@@ -1031,10 +1015,8 @@ function initKeyboardNav() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       const helpPanel = document.getElementById('helpPanel');
-      if (!helpPanel) return;
       if (!helpPanel.classList.contains('hidden')) { toggleHelp(); return; }
       const duaPanel = document.getElementById('duaPanel');
-      if (!duaPanel) return;
       if (!duaPanel.classList.contains('hidden')) { toggleDuaPanel(); return; }
       document.querySelectorAll('.threat-card.open, .shield-card.open').forEach(c => c.classList.remove('open'));
     }
