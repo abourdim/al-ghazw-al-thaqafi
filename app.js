@@ -141,7 +141,7 @@ const T = {
 const THREATS = [
   {
     id:1, emoji:'🕳️', type:'internal',
-    ar:{title:'الفراغ الداخلي',desc:'أمة تركت العلم والبحث وأصبحت فارغة فكرياً — هذا الفراغ هو ما يملؤه الغزاة. المشكلة ليست في قوة العدو بل في ضعفنا.',verse:'إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنفُسِهِمْ',verseRef:'الرعد ١٣: ١١',action:'اقرأ كتاباً واحداً كل شهر عن تاريخك وحضارتك'},
+    ar:{title:'تدين يكره الحضارة وتحضّر يكره الدين',desc:'يشخّص الغزالي الانقسام القاتل في العالم الإسلامي: متدينون يرفضون العلم والتقدم كفساد أجنبي، ومحدّثون يرون الدين عقبة أمام التقدم. كلاهما مخطئ. الإسلام الأصيل يتطلب التعبّد والمشاركة الحضارية معاً. هذا الانقسام الداخلي هو الفراغ الذي يملؤه الغزو الثقافي.',verse:'إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنفُسِهِمْ',verseRef:'الرعد ١٣: ١١',action:'اقرأ كتاباً واحداً كل شهر عن تاريخك وحضارتك'},
     en:{title:'The Internal Void',desc:'A nation that abandoned knowledge and research became intellectually empty — this void is what invaders fill. The problem is not the enemy\'s strength but our weakness.',verse:'Indeed, Allah will not change the condition of a people until they change what is within themselves',verseRef:'Ar-Ra\'d 13:11',action:'Read one book per month about your history and civilization'},
     fr:{title:'Le Vide Interieur',desc:'Une nation qui a abandonne le savoir est devenue intellectuellement vide — ce vide est ce que les envahisseurs remplissent. Le probleme n\'est pas la force de l\'ennemi mais notre faiblesse.',verse:'Allah ne modifie point l\'etat d\'un peuple, tant que les individus ne modifient pas ce qui est en eux-memes',verseRef:'Ar-Ra\'d 13:11',action:'Lisez un livre par mois sur votre histoire et civilisation'}
   },
