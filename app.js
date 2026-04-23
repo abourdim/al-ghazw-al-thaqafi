@@ -545,6 +545,7 @@ function renderThreats() {
   { const _e=document.getElementById('threatsTitle'); if(_e) _e.textContent=t.threatsTitle; }
   { const _e=document.getElementById('threatsDesc'); if(_e) _e.textContent=t.threatsDesc; }
   const container = document.getElementById('threatsContainer');
+  if (!container) return;
   container.innerHTML = `
     <div class="search-bar">
       <span class="search-icon">🔍</span>
@@ -586,6 +587,7 @@ function renderShields() {
   { const _e=document.getElementById('shieldTitle'); if(_e) _e.textContent=t.shieldTitle; }
   { const _e=document.getElementById('shieldDesc'); if(_e) _e.textContent=t.shieldDesc; }
   const container = document.getElementById('shieldContainer');
+  if (!container) return;
   container.innerHTML = `
     <div class="search-bar">
       <span class="search-icon">🔍</span>
@@ -633,6 +635,7 @@ function renderQuiz() {
 function renderQuizQuestion() {
   const t = T[lang];
   const container = document.getElementById('quizContainer');
+  if (!container) return;
   const result = document.getElementById('quizResult');
   result.classList.add('hidden');
 
